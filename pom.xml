@@ -7,11 +7,11 @@
     <groupId>org.example</groupId>
     <artifactId>BoondActionCreate</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging> <!-- Ensure the project is packaged as a JAR for Spring Boot -->
+    <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.release>17</maven.compiler.release> <!-- Ensure Java 17 compatibility -->
-        <spring-boot.version>3.3.5</spring-boot.version> <!-- Set the Spring Boot version -->
+        <maven.compiler.release>17</maven.compiler.release>
+        <spring-boot.version>3.3.5</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot.version}</version> <!-- Use the version from the properties -->
+            <version>${spring-boot.version}</version> <!-- Explicit version added -->
         </dependency>
 
         <!-- Selenium Java -->
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>${spring-boot.version}</version> <!-- Use the version from the properties -->
+            <version>${spring-boot.version}</version> <!-- Explicit version added -->
         </dependency>
     </dependencies>
 
@@ -65,14 +65,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>3.3.5</version> <!-- Added plugin version -->
             </plugin>
 
             <!-- Compiler Plugin to ensure correct Java version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.11.0</version> <!-- Added plugin version -->
                 <configuration>
                     <source>17</source>
                     <target>17</target>
