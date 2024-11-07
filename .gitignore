@@ -39,4 +39,3 @@ build/
 
 ### Sensitive Information ###
 src/main/resources/config.properties
-src/test/resources/testConfig.properties
