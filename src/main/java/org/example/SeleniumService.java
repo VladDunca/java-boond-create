@@ -34,7 +34,7 @@ public class SeleniumService {
     }
 
     public String runAutomation(String candidateId) {
-        System.setProperty("webdriver.chrome.driver", "C:/Program Files/chromedriver-win64/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Chrome Driver\\chromedriver-win64");
 
         ChromeOptions options = getChromeOptions();
 
