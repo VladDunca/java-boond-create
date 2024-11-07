@@ -22,12 +22,23 @@
         </repository>
     </repositories>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version> <!-- Use the latest stable version -->
+    </parent>
+
     <dependencies>
-        <!-- Spring Boot Web Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot.version}</version> <!-- Explicit version added -->
+        </dependency>
+
+        <!-- Optional: For testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- Selenium Java -->
@@ -37,11 +48,12 @@
             <version>4.26.0</version>
         </dependency>
 
+
         <!-- Log4j for logging -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.20.0</version>
+            <version>2.23.1</version>
         </dependency>
 
         <!-- WebDriverManager (optional) -->
@@ -50,24 +62,10 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.3.0</version>
         </dependency>
-
-        <!-- Spring Boot Starter for running the application as a Spring Boot app -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring-boot.version}</version> <!-- Explicit version added -->
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.3.5</version> <!-- Added plugin version -->
-            </plugin>
-
             <!-- Compiler Plugin to ensure correct Java version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -78,6 +76,12 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.3.5</version>
+            </plugin>
+
         </plugins>
     </build>
 </project>
