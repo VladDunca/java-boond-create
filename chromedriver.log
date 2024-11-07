@@ -1,0 +1,101 @@
+[1730985723.553][INFO]: Starting ChromeDriver 131.0.6778.33 (99e6d712212c16b4aaf9747203cd21f893692475-refs/branch-heads/6778@{#1745}) on port 5651
+[1730985723.553][INFO]: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[1730985723.558][INFO]: ChromeDriver was started successfully on port 5651
+[1730985723.669][INFO]: [7b060b2742e4269c43c53ef28d052f7f] COMMAND InitSession {
+   "capabilities": {
+      "firstMatch": [ {
+         "browserName": "chrome",
+         "goog:chromeOptions": {
+            "args": [ "--no-sandbox", "--disable-dev-shm-usage", "--enable-logging", "--v=1", "window-size=1200x600", "--disable-gpu", "--disable-extensions" ],
+            "extensions": [  ]
+         }
+      } ]
+   }
+}
+[1730985723.669][INFO]: Browser search. Trying... C:\Program Files\chromedriver-win64\chrome.exe
+[1730985723.669][INFO]: Browser search. Trying... C:\Program Files\chromedriver-win64\chrome.exe
+[1730985723.669][INFO]: Browser search. Trying... C:\Program Files\chromedriver-win64\chromium.exe
+[1730985723.671][INFO]: Browser search. Trying... C:\Users\vladd\AppData\Local\Google\Chrome\Application\chrome.exe
+[1730985723.671][INFO]: Browser search. Trying... C:\Program Files\Google\Chrome\Application\chrome.exe
+[1730985723.671][INFO]: Browser search. Found at  C:\Program Files\Google\Chrome\Application\chrome.exe
+[1730985723.672][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[1730985723.672][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[1730985723.673][INFO]: ChromeDriver supports communication with Chrome via pipes. This is more reliable and more secure.
+[1730985723.673][INFO]: Use the --remote-debugging-pipe Chrome switch instead of the default --remote-debugging-port to enable this communication mode.
+[1730985723.675][INFO]: Launching chrome: "C:\Program Files\Google\Chrome\Application\chrome.exe" --allow-pre-commit-input --disable-background-networking --disable-backgrounding-occluded-windows --disable-client-side-phishing-detection --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-gpu --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-logging --log-level=0 --no-first-run --no-sandbox --no-service-autorun --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\vladd\AppData\Local\Temp\scoped_dir21360_523692955" --v=1 --window-size=1200x600 data:,
+[1730985723.934][DEBUG]: DevTools HTTP Request: http://localhost:55278/json/version
+[1730985724.245][DEBUG]: DevTools HTTP Response: {
+   "Browser": "Chrome/130.0.6723.117",
+   "Protocol-Version": "1.3",
+   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+   "V8-Version": "13.0.245.18",
+   "WebKit-Version": "537.36 (@37382504fe66965a688029d08706ddadca7ceb46)",
+   "webSocketDebuggerUrl": "ws://localhost:55278/devtools/browser/22556882-9ada-4869-a195-ee3f430da402"
+}
+
+[1730985724.246][INFO]: Failed to connect to Chrome. Attempting to kill it.
+[1730985724.413][INFO]: [7b060b2742e4269c43c53ef28d052f7f] RESPONSE InitSession ERROR session not created: This version of ChromeDriver only supports Chrome version 131
+Current browser version is 130.0.6723.117 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+[1730985724.413][DEBUG]: Log type 'driver' lost 0 entries on destruction
+[1730985724.413][DEBUG]: Log type 'browser' lost 0 entries on destruction
