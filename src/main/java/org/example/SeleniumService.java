@@ -36,12 +36,14 @@ public class SeleniumService {
     public String runAutomation(String candidateId) {
         System.setProperty("webdriver.chrome.driver", "C:/Program Files/chromedriver-win64/chromedriver.exe");
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+        ChromeOptions options = getChromeOptions();
+
+// Enable ChromeDriver logs for more detailed tracking
+        System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
+        System.setProperty("webdriver.chrome.verboseLogging", "true");
 
         WebDriver driver = new ChromeDriver(options);
+
 
         try {
             driver.get("https://ui.boondmanager.com/candidates/" + candidateId + "/actions");
@@ -81,5 +83,27 @@ public class SeleniumService {
         } finally {
             driver.quit();
         }
+    }
+
+    private static ChromeOptions getChromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+        // options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
+        // Enable verbose logging for better debugging
+        options.addArguments("--enable-logging");
+        options.addArguments("--v=1");  // Set verbosity level to 1
+
+        // Set window size to ensure consistent rendering
+        options.addArguments("window-size=1200x600");
+
+        // Disable GPU acceleration if issues arise
+        options.addArguments("--disable-gpu");
+
+        // Disable any extensions that might interfere with the tests
+        options.addArguments("--disable-extensions");
+
+        return options;
     }
 }
