@@ -9,18 +9,33 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.Properties;
 
 @Service
 public class SeleniumService {
 
-    public String runAutomation(String candidateId) {
-        // Set the path to the ChromeDriver executable
-        System.setProperty("webdriver.chrome.driver", "path/to/your/chromedriver");
+    private String username;
+    private String password;
 
-        // Set up ChromeOptions for headless operation
+    public SeleniumService() {
+        Properties properties = new Properties();
+        try (FileInputStream fis = new FileInputStream("src/main/resources/config.properties")) {
+            properties.load(fis);
+            this.username = properties.getProperty("usernameED");
+            this.password = properties.getProperty("passwordED");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String runAutomation(String candidateId) {
+        System.setProperty("webdriver.chrome.driver", "C:/Program Files/chromedriver-win64/chromedriver.exe");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -29,29 +44,34 @@ public class SeleniumService {
         WebDriver driver = new ChromeDriver(options);
 
         try {
-            // Navigate to the candidate profile page
             driver.get("https://ui.boondmanager.com/candidates/" + candidateId + "/actions");
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
 
-            // Wait for and click the "Create Action" button
+            WebElement usernameField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#login-field")));
+            usernameField.click();
+            usernameField.sendKeys(this.username);
+
+            WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember4")));
+            passwordField.click();
+            passwordField.sendKeys(this.password);
+
+            WebElement submitLogin = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#login > div.bml-login-page > div.bml-login-page_content > div.bml-login_content > div.bml-login_content-connect-form > div.bml-login-credentials_button > button")));
+            submitLogin.click();
+
             WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle")));
             createActionButton.click();
 
-            // Wait for the dropdown to open and select the "Email" option
             WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember-power-select-options-ember183 > li:nth-child(8)")));
             emailOption.click();
 
-            // Wait for the message box to be available and type the message
             WebElement messageBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tinymce > p")));
             messageBox.click();
 
-            // Generate current timestamp for the message
             String currentDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
             String message = "An automatic email was sent at " + currentDateTime;
             messageBox.sendKeys(message);
 
-            // Wait for the "Submit" button and click it
             WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle.bmb-dropdown.bmb-validate")));
             submitButton.click();
 

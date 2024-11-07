@@ -10,11 +10,10 @@ public class AutomationController {
     @Autowired
     private SeleniumService seleniumService;
 
-    // Endpoint to trigger the automation script
     @PostMapping("/run-script")
     public String runScript(@RequestBody(required = false) String candidateId) {
         if (candidateId == null) {
-            candidateId = "376"; // Default candidate ID if not provided
+            candidateId = "376";
         }
         return seleniumService.runAutomation(candidateId);
     }
