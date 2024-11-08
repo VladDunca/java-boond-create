@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,7 @@ public class SeleniumService {
 
 
         try {
+            Actions actions = new Actions(driver);
             driver.get("https://ui.boondmanager.com/candidates/" + candidateId + "/actions");
 
             driver.manage().window().maximize();
@@ -68,8 +70,8 @@ public class SeleniumService {
             WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle")));
             createActionButton.click();
 
-            WebElement dropdownOptions = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember190 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value > div.bmc-field-select_trigger")));
-            dropdownOptions.click();
+            WebElement dropdownOptions = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember231 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value.bm-focus > div.bmc-field-select_trigger > div > span")));
+            actions.moveToElement(dropdownOptions).click().perform();
 
             WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#bm-select-wormhole-ember174 > div > div.bmc-field-select_dropdown_options > ul > li:nth-child(8)")));
             emailOption.click();
