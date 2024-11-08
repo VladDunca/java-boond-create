@@ -65,10 +65,13 @@ public class SeleniumService {
 
             driver.manage().getCookies();
 
-            WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember116 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value > div.bmc-field-select_trigger")));
+            WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle")));
             createActionButton.click();
 
-            WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember-power-select-options-ember183 > li:nth-child(8)")));
+            WebElement dropdownOptions = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember190 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value > div.bmc-field-select_trigger")));
+            dropdownOptions.click();
+
+            WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#bm-select-wormhole-ember174 > div > div.bmc-field-select_dropdown_options > ul > li:nth-child(8)")));
             emailOption.click();
 
             WebElement messageBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tinymce > p")));
@@ -78,7 +81,7 @@ public class SeleniumService {
             String message = "An automatic email was sent at " + currentDateTime;
             messageBox.sendKeys(message);
 
-            WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle.bmb-dropdown.bmb-validate")));
+            WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember218 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_footer > button.bmc-btn.bm-tooltips.bmb-rectangle.bmb-dropdown.bmb-validate > span")));
             submitButton.click();
 
             return "Script completed successfully.";
@@ -100,6 +103,7 @@ public class SeleniumService {
         // Enable verbose logging for better debugging
         options.addArguments("--enable-logging");
         options.addArguments("--v=1");  // Set verbosity level to 1
+
 
         // Disable GPU acceleration if issues arise
         options.addArguments("--disable-gpu");
