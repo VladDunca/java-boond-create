@@ -65,7 +65,7 @@ public class SeleniumService {
 
             driver.manage().getCookies();
 
-            WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle")));
+            WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember116 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value > div.bmc-field-select_trigger")));
             createActionButton.click();
 
             WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember-power-select-options-ember183 > li:nth-child(8)")));
