@@ -70,10 +70,13 @@ public class SeleniumService {
             WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle")));
             createActionButton.click();
 
-            WebElement dropdownOptions = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember231 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value.bm-focus > div.bmc-field-select_trigger > div > span")));
-            actions.moveToElement(dropdownOptions).click().perform();
+            WebElement modalBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bmc-modal-native-box")));
+            wait.until(ExpectedConditions.elementToBeClickable(modalBox));
 
-            WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#bm-select-wormhole-ember174 > div > div.bmc-field-select_dropdown_options > ul > li:nth-child(8)")));
+            WebElement dropdownOptions = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.bmc-modal-native.open.bmc-modal-native_large div.bmc-modal-native-box_content div.bmc-field-select_trigger")));
+            dropdownOptions.click();
+
+            WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.bmc-field-select_dropdown_options > ul > li:nth-child(8)")));
             emailOption.click();
 
             WebElement messageBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tinymce > p")));
@@ -83,7 +86,7 @@ public class SeleniumService {
             String message = "An automatic email was sent at " + currentDateTime;
             messageBox.sendKeys(message);
 
-            WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ember218 > div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_footer > button.bmc-btn.bm-tooltips.bmb-rectangle.bmb-dropdown.bmb-validate > span")));
+            WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.bmc-modal-native-box_footer > button.bmc-btn.bm-tooltips.bmb-rectangle.bmb-dropdown.bmb-validate > span")));
             submitButton.click();
 
             return "Script completed successfully.";
