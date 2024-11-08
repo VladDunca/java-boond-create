@@ -48,6 +48,8 @@ public class SeleniumService {
         try {
             driver.get("https://ui.boondmanager.com/candidates/" + candidateId + "/actions");
 
+            driver.manage().window().maximize();
+
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
 
             WebElement usernameField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#login-field")));
@@ -60,6 +62,8 @@ public class SeleniumService {
 
             WebElement submitLogin = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#login > div.bml-login-page > div.bml-login-page_content > div.bml-login_content > div.bml-login_content-connect-form > div.bml-login-credentials_button > button")));
             submitLogin.click();
+
+            driver.manage().getCookies();
 
             WebElement createActionButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".bmc-btn.bm-tooltips.bmb-rectangle")));
             createActionButton.click();
@@ -87,6 +91,8 @@ public class SeleniumService {
 
     private static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
+
+        options.addArguments("--start-maximized");
         // options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
@@ -94,9 +100,6 @@ public class SeleniumService {
         // Enable verbose logging for better debugging
         options.addArguments("--enable-logging");
         options.addArguments("--v=1");  // Set verbosity level to 1
-
-        // Set window size to ensure consistent rendering
-        options.addArguments("window-size=1200x600");
 
         // Disable GPU acceleration if issues arise
         options.addArguments("--disable-gpu");
