@@ -44,10 +44,9 @@ public class SeleniumService {
         System.setProperty("webdriver.chrome.verboseLogging", "true");
 
         WebDriver driver = new ChromeDriver(options);
-
+        Actions actions = new Actions(driver);
 
         try {
-            Actions actions = new Actions(driver);
             driver.get("https://ui.boondmanager.com/candidates/" + candidateId + "/actions");
 
             driver.manage().window().maximize();
@@ -73,11 +72,18 @@ public class SeleniumService {
             WebElement modalBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bmc-modal-native-box")));
             wait.until(ExpectedConditions.elementToBeClickable(modalBox));
 
-            WebElement dropdownOptions = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.bmc-modal-native.open.bmc-modal-native_large div.bmc-modal-native-box_content div.bmc-field-select_trigger")));
-            dropdownOptions.click();
+            WebElement parentContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-of-type(2) > div:nth-of-type(1) > div > div.bmc-field-select.required.bm-has-value")));
+            actions.moveToElement(parentContainer).perform();
+
+            WebElement dropdownOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.bmc-modal-native.open.bmc-modal-native_large > div > div.bmc-modal-native-box_content > div:nth-child(2) > div:nth-child(1) > div > div.bmc-field-select.required.bm-has-value > div.bmc-field-select_trigger > div > span")));
+            actions.moveToElement(dropdownOptions).click().perform();
 
             WebElement emailOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.bmc-field-select_dropdown_options > ul > li:nth-child(8)")));
             emailOption.click();
+
+            WebElement iframe = driver.findElement(By.cssSelector("iframe.tox-edit-area__iframe[title='Zone de texte riche. Appuyez sur ALT-0 pour l\\'aide.']"));
+
+            driver.switchTo().frame(iframe);
 
             WebElement messageBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tinymce > p")));
             messageBox.click();
@@ -85,6 +91,8 @@ public class SeleniumService {
             String currentDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
             String message = "An automatic email was sent at " + currentDateTime;
             messageBox.sendKeys(message);
+
+            driver.switchTo().defaultContent();
 
             WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.bmc-modal-native-box_footer > button.bmc-btn.bm-tooltips.bmb-rectangle.bmb-dropdown.bmb-validate > span")));
             submitButton.click();
