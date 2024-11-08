@@ -39,9 +39,6 @@ public class SeleniumService {
 
         ChromeOptions options = getChromeOptions();
 
-// Enable ChromeDriver logs for more detailed tracking
-        System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
-        System.setProperty("webdriver.chrome.verboseLogging", "true");
 
         WebDriver driver = new ChromeDriver(options);
         Actions actions = new Actions(driver);
