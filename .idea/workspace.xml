@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="464764a7-c5be-4b06-944e-9e970cfd690a" name="Changes" comment="" />
+    <list default="true" id="464764a7-c5be-4b06-944e-9e970cfd690a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/chromedriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/chromedriver.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SeleniumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SeleniumService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
